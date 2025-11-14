@@ -18,7 +18,7 @@
             <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="principal.html">
+                            <a class="nav-link active" href="principal">
                                 <i class="fas fa-home"></i> Inicio
                             </a>
                         </li>
@@ -70,7 +70,7 @@
                         <div class="collapse" id="ejidatariosMenu">
                             <ul class="nav flex-column submenu">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="nuevoEjidatario.html">
+                                    <a class="nav-link active" href="nuevoE">
                                         <i class="far fa-address-card"></i> Nuevo Ejidatario
                                     </a>
                                 </li>
@@ -80,7 +80,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="listadoEjidatarios.html">
+                                    <a class="nav-link" href="listadoEjidatarios">
                                         <i class="fas fa-list"></i> Listado Completo
                                     </a>
                                 </li>
@@ -270,7 +270,7 @@
                         <div class="collapse" id="parcelasMenu">
                             <ul class="nav flex-column submenu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="nuevaParcela.php">
+                                    <a class="nav-link" href="nuevaP">
                                         <i class="fas fa-plus-circle"></i> Nueva Parcela
                                     </a>
                                 </li>
@@ -280,7 +280,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="listadoParcelas.php">
+                                    <a class="nav-link" href="listadoParc">
                                         <i class="fas fa-list"></i> Listado
                                     </a>
                                 </li>
@@ -297,12 +297,12 @@
                         <div class="collapse" id="gastosMenu">
                             <ul class="nav flex-column submenu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="nuevoGasto.php">
+                                    <a class="nav-link" href="nuevoGast">
                                         <i class="fas fa-plus-circle"></i> Nuevo Gasto
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="consultaGasto.php">
+                                    <a class="nav-link" href="consultaGast">
                                         <i class="fas fa-list"></i> Consultar Gastos
                                     </a>
                                 </li>
@@ -319,7 +319,7 @@
                         <div class="collapse" id="inventarioMenu">
                             <ul class="nav flex-column submenu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="nuevoArticulo.php">
+                                    <a class="nav-link" href="nuevoArt">
                                         <i class="fas fa-plus-circle"></i> Nuevo Artículo
                                     </a>
                                 </li>

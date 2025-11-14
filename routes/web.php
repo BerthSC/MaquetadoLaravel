@@ -21,3 +21,15 @@ Route::get('/nuevoArt', function(){
 Route::get('/nuevoGast', function(){
     return view('RegisterViews/nuevoGasto');
 });
+
+Route::get('/listadoParc', function(){
+    return view('ListViews/listadoParcelas');
+});
+
+Route::get('/listadoEjidatarios', function(){
+    return view('ListViews/listadoEjidatarios');
+});
+
+Route::get('/consultaGast', function(){
+    return view('ListViews/consultaGasto');
+});
