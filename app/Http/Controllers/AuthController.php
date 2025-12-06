@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
@@ -31,7 +30,8 @@ class AuthController extends Controller
             ->where('correo_electronico', $request->correo_electronico)
             ->first();
 
-        if (!$usuario || !Hash::check($request->contrasennia, $usuario->contrasennia)) {
+        // comparación directa de texto plano
+        if (!$usuario || $request->contrasennia !== $usuario->contrasennia) {
             return back()->withErrors(['correo_electronico' => 'Datos incorrectos']);
         }
 
@@ -126,10 +126,11 @@ class AuthController extends Controller
             return redirect('/login')->with('error', 'Token inválido');
         }
 
+        // guardar contraseña directamente en texto plano
         DB::table('usuarios')
             ->where('id', $usuario->id)
             ->update([
-                'contrasennia' => Hash::make($request->contrasennia),
+                'contrasennia' => $request->contrasennia,
                 'token_recuperacion' => null
             ]);
 
