@@ -12,8 +12,10 @@
 
 <body>
    @include('IncludeViews.menu')
+
     <!-- Contenido principal -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+
         <!-- Encabezado de módulo -->
         <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -29,9 +31,9 @@
                         <i class="fas fa-print me-1"></i>Imprimir
                     </button>
                 </div>
-                <button type="button" class="btn btn-sm btn-ejidal">
+                <a href="{{ route('gastos.create') }}" class="btn btn-sm btn-ejidal">
                     <i class="fas fa-plus-circle me-1"></i>Nuevo Gasto
-                </button>
+                </a>
             </div>
         </div>
 
@@ -65,47 +67,72 @@
         <!-- Contenido específico del CRUD -->
         <div class="card card-ejidal">
             <div class="card-header card-header-ejidal">
-                <i class="fas fa-edit me-2"></i> Nuevo Gasto
+                <i class="fas fa-edit me-2"></i> Editar Gasto
             </div>
-            <div class="card-body">
-                <form method="POST" action="{{ route('gastos.store') }}">
-    @csrf
-    <div class="row mb-3">
-        <div class="col-md-7">
-            <label for="responsable" class="form-label">Responsable</label>
-            <input type="text" class="form-control" id="responsable" name="responsable" required>
-        </div>
-        <div class="col-md-5">
-            <label for="fecha" class="form-label">Fecha del Gasto</label>
-            <input type="date" class="form-control" id="fecha" name="fecha" required>
-        </div>
-        <div class="col-md-4">
-            <label for="monto" class="form-label">Monto</label>
-            <input type="number" class="form-control" id="monto" name="monto" step="0.01" required>
-        </div>
-        <div class="col-md-4">
-            <label for="medida" class="form-label">Medida</label>
-            <input type="text" class="form-control" id="medida" name="medida" required>
-        </div>
-        <div class="col-md-4">
-            <label for="concepto" class="form-label">Concepto</label>
-            <input type="text" class="form-control" id="concepto" name="concepto" required>
-        </div>
-    </div>
-    <div class="text-end">
-        <button type="button" class="btn btn-secondary me-2">
-            <i class="fas fa-times me-1"></i> Cancelar
-        </button>
-        <button type="submit" class="btn btn-ejidal">
-            <i class="fas fa-save me-1"></i> Guardar Gasto
-        </button>
-    </div>
-</form>
 
+            <div class="card-body">
+
+                <!-- ALERTAS -->
+                @if(session('status'))
+                    <div class="alert alert-success">{{ session('status') }}</div>
+                @endif
+
+                @if(session('error'))
+                    <div class="alert alert-danger">{{ session('error') }}</div>
+                @endif
+
+                <!-- FORMULARIO -->
+                <form method="POST" action="{{ route('gastos.actualizar', $gasto->idGasto) }}">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="row mb-3">
+                        <div class="col-md-7">
+                            <label for="responsable" class="form-label">Responsable</label>
+                            <input type="text" class="form-control" id="responsable" name="responsable"
+                                   value="{{ $gasto->responsable }}" required>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label for="fecha" class="form-label">Fecha del Gasto</label>
+                            <input type="date" class="form-control" id="fecha" name="fecha"
+                                   value="{{ $gasto->fecha }}" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="monto" class="form-label">Monto</label>
+                            <input type="number" class="form-control" id="monto" name="monto"
+                                   value="{{ $gasto->monto }}" step="0.01" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="medida" class="form-label">Medida</label>
+                            <input type="text" class="form-control" id="medida" name="medida"
+                                   value="{{ $gasto->medida }}" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="concepto" class="form-label">Concepto</label>
+                            <input type="text" class="form-control" id="concepto" name="concepto"
+                                   value="{{ $gasto->concepto }}" required>
+                        </div>
+                    </div>
+
+                    <div class="text-end">
+                        <a href="{{ url('/consultaGast') }}" class="btn btn-secondary me-2">
+                            <i class="fas fa-times me-1"></i> Cancelar
+                        </a>
+
+                        <button type="submit" class="btn btn-ejidal">
+                            <i class="fas fa-save me-1"></i> Actualizar Gasto
+                        </button>
+                    </div>
+                </form>
 
             </div>
         </div>
     </main>
+
     </div>
     @include('IncludeViews.pie')
     </div>

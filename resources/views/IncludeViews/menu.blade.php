@@ -324,7 +324,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="listaEquipos">
                                         <i class="fas fa-list"></i> Listado
                                     </a>
                                 </li>
@@ -346,13 +346,13 @@
                         <div class="collapse" id="apoyosMenu">
                             <ul class="nav flex-column submenu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="nuevoRecurso">
                                         <i class="fas fa-plus-circle"></i> Nuevo Apoyo
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <i class="fas fa-list"></i> Registros
+                                    <a class="nav-link" href="{{ route('recursos.index') }}">
+                                        <i class="fas fa-boxes me-2"></i> Listado
                                     </a>
                                 </li>
                                 <li class="nav-item">
