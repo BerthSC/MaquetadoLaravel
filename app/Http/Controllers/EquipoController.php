@@ -67,7 +67,7 @@ class EquipoController extends Controller
         return view('RegisterViews.editarEquipo', compact('equipo'));
     }
 
-    // Alias para coincidir con web.php
+
     public function editar($id)
     {
         return $this->edit($id);
@@ -97,7 +97,6 @@ class EquipoController extends Controller
                          ->with('success', 'Equipo actualizado correctamente');
     }
 
-    // Alias para coincidir con web.php
     public function actualizar(Request $request, $id)
     {
         return $this->update($request, $id);
@@ -115,7 +114,6 @@ class EquipoController extends Controller
                          ->with('success', 'Equipo eliminado correctamente');
     }
 
-    // Alias para coincidir con web.php
     public function eliminar($id)
     {
         return $this->destroy($id);

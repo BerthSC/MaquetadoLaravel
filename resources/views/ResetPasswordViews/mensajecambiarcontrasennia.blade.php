@@ -19,7 +19,7 @@
                     <td>
                         <p>Estimado/a <strong>{{ $nombreCompleto }}</strong>,</p>
                         <p>Hemos recibido una solicitud para restablecer la contraseña de su cuenta. Para proceder con el cambio de contraseña, haga clic en el siguiente botón:</p>
-                        <p style="text-align:center;">
+                        <p>
                             <a href="{{ route('reset.form', ['token' => $token]) }}" 
                                style="display:inline-block; padding:12px 24px; background-color:#0d6efd; color:#ffffff; text-decoration:none; border-radius:5px; font-weight:bold;">
                                Restablecer Contraseña

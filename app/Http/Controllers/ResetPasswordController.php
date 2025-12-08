@@ -12,13 +12,11 @@ use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller
 {
-    // Mostrar formulario para cambiar contraseña usando token
     public function showResetFormWithToken($token)
 {
     return view('AuthViews.cambiarcontrasennia', ['token' => $token]);
 }
 
-    // Enviar correo con link
     public function sendResetLinkEmail(Request $request)
     {
         $request->validate(['correo' => 'required|email']);
@@ -49,7 +47,6 @@ class ResetPasswordController extends Controller
         return back()->with('mensaje', 'Revisa tu correo para continuar');
     }
 
-    // Actualizar contraseña
     public function resetPassword(Request $request)
     {
         $request->validate([

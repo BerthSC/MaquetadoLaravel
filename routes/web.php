@@ -10,12 +10,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ResetPasswordController;
 
 
-
-
-
-
 Route::get('/principal', function () {
-    return view('AuthViews.principal'); // Ajusta según tu vista real
+    return view('AuthViews.principal'); 
 })->name('principal');
 
 Route::get('/nuevoE', function(){
@@ -50,7 +46,6 @@ Route::get('/consultaGast', function(){
     return view('ListViews/consultaGasto');
 });
 
-// Listado principal
 Route::get('/listaEquipos', [\App\Http\Controllers\EquipoController::class, 'index'])
     ->name('equipos.principal');
 
@@ -60,15 +55,8 @@ Route::get('/nuevaP', [ParcelasController::class, 'create'])->name('parcelas.cre
 Route::post('/nuevaP', [ParcelasController::class, 'store'])->name('parcelas.store');
 
 
-// Formulario de creación
 Route::get('/nuevoGasto', [GastosController::class, 'create'])->name('gastos.create');
-
-// Guardar gasto
 Route::post('/gastosguardar', [GastosController::class, 'store'])->name('gastos.store');
-
-
-
-/// Gastos
 Route::get('/gastos', [GastosController::class, 'index'])->name('gastos.index');          // Listar todos
 Route::get('/gastos/nuevo', [GastosController::class, 'create'])->name('gastos.nuevo');   // Formulario nuevo
 Route::post('/gastos/guardar', [GastosController::class, 'store'])->name('gastos.store'); // Guardar nuevo
@@ -76,13 +64,11 @@ Route::get('/gastos/editar/{id}', [GastosController::class, 'edit'])->name('gast
 Route::put('/gastos/actualizar/{id}', [GastosController::class, 'update'])->name('gastos.actualizar'); // Actualizar
 Route::delete('/gastos/eliminar/{id}', [GastosController::class, 'destroy'])->name('gastos.eliminar'); // Eliminar
 
-
 Route::get('/consultaGast', function () {
     $gastos = DB::table('gastos')->orderBy('idGasto', 'desc')->get();
     return view('ListViews.consultaGasto', compact('gastos'));
 });
 
-/* Equipos */
 Route::get('/equipos', [EquipoController::class, 'index'])->name('equipos.principal');
 Route::get('/equipos/nuevo', [EquipoController::class, 'create'])->name('equipos.create');
 Route::post('/equipos/guardar', [EquipoController::class, 'store'])->name('equipos.store');
@@ -108,16 +94,13 @@ Route::delete('/recursos/eliminar/{id}', [RecursosController::class, 'destroy'])
 
 
 
-// LOGIN
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// RECUPERAR CONTRASEÑA
 Route::get('/forgot', [AuthController::class, 'showForgotForm'])->name('forgot');
 Route::post('/forgot', [AuthController::class, 'sendRecoveryLink'])->name('forgot.send');
 
-// CAMBIAR CONTRASEÑA CON TOKEN
 Route::get('/reset/{token}', [AuthController::class, 'showResetForm'])->name('reset.form');
 Route::put('/reset', [AuthController::class, 'resetPassword'])->name('reset.password');
 

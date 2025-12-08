@@ -11,9 +11,7 @@ use App\Mail\cambiarcontrasenniaMailable;
 
 class AuthController extends Controller
 {
-    // ---------------------------------------------------------
-    // LOGIN
-    // ---------------------------------------------------------
+    // login
     public function showLoginForm()
     {
         return view('AuthViews.login');
@@ -41,26 +39,20 @@ class AuthController extends Controller
         return redirect('/principal');
     }
 
-    // ---------------------------------------------------------
     // LOGOUT
-    // ---------------------------------------------------------
     public function logout()
     {
         Session::flush();
         return redirect('/login');
     }
 
-    // ---------------------------------------------------------
-    // OLVIDÓ SU CONTRASEÑA - FORMULARIO
-    // ---------------------------------------------------------
+    // formulario olvido su contraseña
     public function showForgotForm()
     {
         return view('ResetPasswordViews.olvidosucontrasennia');
     }
 
-    // ---------------------------------------------------------
-    // ENVÍA TOKEN DE RECUPERACIÓN POR CORREO
-    // ---------------------------------------------------------
+    // token de recuperacion
     public function sendRecoveryLink(Request $request)
     {
         $request->validate([
@@ -90,9 +82,7 @@ class AuthController extends Controller
         return back()->with('success', 'Se ha enviado un enlace de recuperación a tu correo');
     }
 
-    // ---------------------------------------------------------
-    // MOSTRAR FORMULARIO PARA CAMBIAR CONTRASEÑA
-    // ---------------------------------------------------------
+    // mostrar formulario de recuperacion de contraseña
     public function showResetForm($token)
     {
         $usuario = DB::table('usuarios')
@@ -108,9 +98,7 @@ class AuthController extends Controller
         ]);
     }
 
-    // ---------------------------------------------------------
-    // ACTUALIZAR CONTRASEÑA
-    // ---------------------------------------------------------
+    // actualizar contraseña
     public function resetPassword(Request $request)
     {
         $request->validate([

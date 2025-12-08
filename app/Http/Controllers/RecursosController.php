@@ -9,7 +9,6 @@ class RecursosController extends Controller
 {
     public function index()
     {
-        // Misma validación que usa Gastos
         if (!session()->has('id')) {
             return redirect()->route('login');
         }

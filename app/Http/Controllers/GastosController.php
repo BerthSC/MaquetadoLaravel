@@ -7,12 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class GastosController extends Controller
 {
-    // ---------------------------------------------------------
-    // LISTAR TODOS LOS GASTOS
-    // ---------------------------------------------------------
-    public function index()
+        public function index()
     {
-        // Validación de sesión
         if (!session()->has('id')) {
             return redirect()->route('login');
         }
@@ -21,9 +17,7 @@ class GastosController extends Controller
         return view('ListViews.consultaGasto', compact('gastos'));
     }
 
-    // ---------------------------------------------------------
-    // FORMULARIO NUEVO GASTO
-    // ---------------------------------------------------------
+    
     public function create()
     {
         if (!session()->has('id')) {
@@ -33,9 +27,7 @@ class GastosController extends Controller
         return view('RegisterViews.nuevoGasto');
     }
 
-    // ---------------------------------------------------------
-    // GUARDAR NUEVO GASTO
-    // ---------------------------------------------------------
+    
     public function store(Request $request)
     {
         if (!session()->has('id')) {
@@ -53,9 +45,7 @@ class GastosController extends Controller
         return redirect()->route('gastos.index')->with('status', 'Gasto registrado correctamente.');
     }
 
-    // ---------------------------------------------------------
-    // EDITAR GASTO
-    // ---------------------------------------------------------
+    
     public function edit($id)
     {
         if (!session()->has('id')) {
@@ -66,9 +56,7 @@ class GastosController extends Controller
         return view('RegisterViews.editarGasto', compact('gasto'));
     }
 
-    // ---------------------------------------------------------
-    // ACTUALIZAR GASTO
-    // ---------------------------------------------------------
+   
     public function update(Request $request, $id)
     {
         if (!session()->has('id')) {
@@ -86,9 +74,7 @@ class GastosController extends Controller
         return redirect()->route('gastos.index')->with('status', 'Gasto actualizado correctamente.');
     }
 
-    // ---------------------------------------------------------
-    // ELIMINAR GASTO
-    // ---------------------------------------------------------
+
     public function destroy($id)
     {
         if (!session()->has('id')) {
